@@ -11,7 +11,7 @@ public class App {
     String fileName =
       "/Users/rache/Documents/GitHub/general-cavazos-cammander-app/commander_app/src/main/java/com/example/commands.json";
 
-    // read coammands
+    // read commands
     JSONArray commandJSONArray = JSONFile.readArray(fileName);
     String[] commandArray = getCommandArray(commandJSONArray);
 
