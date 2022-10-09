@@ -81,7 +81,6 @@ public class App {
   // command functions
   private static void executeCommand(Scanner scan, Character command, String[] commandArray) {
 
-
     switch (command) {
       case 'q':
         System.out.println("Thank you General Cavazos!");
@@ -91,6 +90,12 @@ public class App {
         break;
       case 'i':
         issueCommand(commandArray);
+      case 'u':
+        if (commandHistory.size() == 0) {
+          System.out.println("ERROR: There are no commands to redo. Please issue a command.");
+        }
+        System.out.println("[REDO COMMAND ISSUED: General Cavazos orders the troops to redo: " + commandHistory.peek());
+      
     }
 
   }
