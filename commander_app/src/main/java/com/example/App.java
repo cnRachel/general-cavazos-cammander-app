@@ -6,7 +6,7 @@ import org.json.simple.*;
 
 public class App {
 
-  Stack<String> commandHistory = new Stack<String>();
+  static Stack<String> commandHistory = new Stack<String>();
   public static void main(String[] args) {
     String fileName =
       "/Users/rache/Documents/GitHub/general-cavazos-cammander-app/commander_app/src/main/java/com/example/commands.json";
@@ -88,19 +88,20 @@ public class App {
         break;
       case 'l':
         print(commandArray);
+        break;
+      case 'i':
+        issueCommand(commandArray);
     }
 
   }
 
-  // randomly issue commands from General Cavazos
-  public static void randomCommand(String[] commandArray, int numCommand) {
+  // randomly issue command from General Cavazos
+  public static void issueCommand(String[] commandArray) {
     Random rand = new Random();
-    System.out.printf("Number\tCommand\n");
-    System.out.printf("------\t---------------\n");
-    for (int i = 0; i < numCommand; i++) {
-      int randIndex = rand.nextInt(commandArray.length);
-      System.out.printf("%04d\t%s\n", i, commandArray[randIndex]);
-    }
+    System.out.print("[COMMAND ISSUED]: General Cavazos orders the troops to do: ");
+    int randIndex = rand.nextInt(commandArray.length);
+    System.out.println(commandArray[randIndex]);
+    commandHistory.push(commandArray[randIndex]);
   }
 
   // print command array
