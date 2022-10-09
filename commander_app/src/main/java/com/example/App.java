@@ -15,15 +15,6 @@ public class App {
     JSONArray commandJSONArray = JSONFile.readArray(fileName);
     String[] commandArray = getCommandArray(commandJSONArray);
 
-    // // print list of all commands
-    // System.out.println("----- List of all commands -----");
-    // print(commandArray);
-
-    // System.out.println(
-    //   "----- Issuing 5 random commands from General Cavazos -----"
-    // );
-    // randomCommand(commandArray, 5);
-
     Scanner scan = new Scanner(System.in);
     Character command = '_';
 
@@ -35,8 +26,6 @@ public class App {
     }
 
     scan.close();
-
-
   }
 
   private static void printMenuLine() {
@@ -97,6 +86,7 @@ public class App {
           break;
         }
         System.out.println("[REDO COMMAND ISSUED]: General Cavazos orders the troops to redo: " + commandHistory.peek());
+        break;
       case 'u':
         if (commandHistory.size() == 0) {
           System.out.println("ERROR: There are no commands to undo. Please issue a command.");
@@ -104,6 +94,10 @@ public class App {
         }
         System.out.println("[UNDO COMMAND ISSUED]: General Cavazos orders the troops to undo: " + commandHistory.peek());
         commandHistory.pop();
+        break;
+      default:
+        System.out.println("ERROR: Unknown command");
+        break;
     }
 
   }
