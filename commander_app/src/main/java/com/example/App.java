@@ -31,7 +31,7 @@ public class App {
       printMenu();
       System.out.print("Enter a command: ");
       command = menuGetCommand(scan);
-      //executeCommand(scan, command);
+      executeCommand(scan, command);
     }
 
     scan.close();
@@ -65,6 +65,7 @@ public class App {
     printMenuLine();
   }
 
+  // reads user input
   private static Character menuGetCommand(Scanner scan) {
     Character command = '_';
     String rawInput = scan.nextLine();
@@ -75,6 +76,18 @@ public class App {
     }
 
     return command;
+  }
+
+  // command functions
+  private static void executeCommand(Scanner scan, Character command) {
+
+
+    switch (command) {
+      case 'q':
+      System.out.println("Thank you General Cavazos!");
+      break;
+    }
+
   }
 
   // randomly issue commands from General Cavazos
