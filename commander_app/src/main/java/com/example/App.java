@@ -90,12 +90,20 @@ public class App {
         break;
       case 'i':
         issueCommand(commandArray);
-      case 'u':
+        break;
+      case 'r':
         if (commandHistory.size() == 0) {
           System.out.println("ERROR: There are no commands to redo. Please issue a command.");
+          break;
         }
-        System.out.println("[REDO COMMAND ISSUED: General Cavazos orders the troops to redo: " + commandHistory.peek());
-      
+        System.out.println("[REDO COMMAND ISSUED]: General Cavazos orders the troops to redo: " + commandHistory.peek());
+      case 'u':
+        if (commandHistory.size() == 0) {
+          System.out.println("ERROR: There are no commands to undo. Please issue a command.");
+          break;
+        }
+        System.out.println("[UNDO COMMAND ISSUED]: General Cavazos orders the troops to undo: " + commandHistory.peek());
+        commandHistory.pop();
     }
 
   }
