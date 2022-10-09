@@ -1,10 +1,12 @@
 package com.example;
 
-import java.util.Random;
+import java.util.*;
+
 import org.json.simple.*;
 
 public class App {
 
+  Stack<String> commandHistory = new Stack<String>();
   public static void main(String[] args) {
     String fileName =
       "/Users/rache/Documents/GitHub/general-cavazos-cammander-app/commander_app/src/main/java/com/example/commands.json";
@@ -12,16 +14,50 @@ public class App {
     // read coammands
     JSONArray commandJSONArray = JSONFile.readArray(fileName);
     String[] commandArray = getCommandArray(commandJSONArray);
-    System.out.println(commandArray);
 
-    // print list of all commands
-    System.out.println("----- List of all commands -----");
-    print(commandArray);
+    // // print list of all commands
+    // System.out.println("----- List of all commands -----");
+    // print(commandArray);
 
+    // System.out.println(
+    //   "----- Issuing 5 random commands from General Cavazos -----"
+    // );
+    // randomCommand(commandArray, 5);
+
+    Scanner scan = new Scanner(System.in);
+    Character command = '_';
+
+    //while (command != 'q') {
+      printMenu();
+    //}
+
+
+  }
+
+  private static void printMenuLine() {
     System.out.println(
-      "----- Issuing 5 random commands from General Cavazos -----"
+      "----------------------------------------------------------"
     );
-    randomCommand(commandArray, 5);
+  }
+
+  // print the commands
+  private static void printMenuCommand(Character command, String desc) {
+    System.out.printf("%s\t%s\n", command, desc);
+  }
+
+  // prints the menu
+  public static void printMenu() {
+    printMenuLine();
+    System.out.println("General Cavazos Commander App");
+    printMenuLine();
+
+    printMenuCommand('i', "Issue a command");
+    printMenuCommand('l', "List all of the commands");
+    printMenuCommand('u', "Undo the last command that was issued");
+    printMenuCommand('r', "Redo the last command that was issued");
+    printMenuCommand('q', "Quit");    
+
+    printMenuLine();
   }
 
   // randomly issue commands from General Cavazos
