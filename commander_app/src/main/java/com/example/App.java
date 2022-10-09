@@ -27,9 +27,14 @@ public class App {
     Scanner scan = new Scanner(System.in);
     Character command = '_';
 
-    //while (command != 'q') {
+    while (command != 'q') {
       printMenu();
-    //}
+      System.out.print("Enter a command: ");
+      command = menuGetCommand(scan);
+      //executeCommand(scan, command);
+    }
+
+    scan.close();
 
 
   }
@@ -58,6 +63,18 @@ public class App {
     printMenuCommand('q', "Quit");    
 
     printMenuLine();
+  }
+
+  private static Character menuGetCommand(Scanner scan) {
+    Character command = '_';
+    String rawInput = scan.nextLine();
+
+    if (rawInput.length() > 0) {
+      rawInput = rawInput.toLowerCase();
+      command = rawInput.charAt(0);
+    }
+
+    return command;
   }
 
   // randomly issue commands from General Cavazos
